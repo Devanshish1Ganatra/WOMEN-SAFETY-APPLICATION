@@ -1,1 +1,21 @@
-# Use official Node LTS image\nFROM node:20-alpine\n\n# Create app directory\nWORKDIR /app\n\n# Install app dependencies (only production)\nCOPY package*.json ./\nRUN npm ci --only=production\n\n# Copy source code\nCOPY . .\n\n# Expose the API port (default 5001)\nEXPOSE 5001\n\n# Define environment variables (optional)\nENV NODE_ENV=production\n\n# Start the server\nCMD ["node", "src/server.js"]\n
+# Use official Node LTS image
+FROM node:20-alpine
+
+# Create app directory
+WORKDIR /app
+
+# Install app dependencies (only production)
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy source code
+COPY . .
+
+# Expose the API port (default 5001)
+EXPOSE 5001
+
+# Define environment variables (optional)
+ENV NODE_ENV=production
+
+# Start the server
+CMD ["node", "src/server.js"]
