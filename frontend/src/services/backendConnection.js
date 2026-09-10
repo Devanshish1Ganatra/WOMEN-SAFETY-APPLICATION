@@ -19,5 +19,4 @@ export async function fetchWithBackendRetry(url, options, attempts = 3) {
 }
 
 export const localBackendUnavailableMessage =
-  'Unable to connect to the server. Please check your internet connection and try again. If the problem persists, the server may be starting up — wait a few seconds and retry.';
-
+  'Safe-Era local server is unavailable. Run the app using Android Studio Debug while this phone/emulator is connected by USB; the project will start the backend and configure its connection automatically.';
