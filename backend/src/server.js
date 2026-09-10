@@ -33,9 +33,14 @@ app.use(helmet({
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
+  'capacitor://localhost',
+  'ionic://localhost',
+  'https://localhost',
+  'http://localhost',
   process.env.FRONTEND_URL,
   ...(process.env.FRONTEND_URLS ? process.env.FRONTEND_URLS.split(',') : [])
 ].filter(Boolean).map(origin => origin.trim()).filter(Boolean);
+
 
 const isAllowedOrigin = (origin) => {
   if (!origin) return true;
